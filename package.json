@@ -1,0 +1,25 @@
+{
+  "name": "messager",
+  "version": "1.0.0",
+  "description": "messager on nodejs express platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Elias0Ainsworth/ExpressMessagger.git"
+  },
+  "keywords": [
+    "messager",
+    "express",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Elias Ainsworth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elias0Ainsworth/ExpressMessagger/issues"
+  },
+  "homepage": "https://github.com/Elias0Ainsworth/ExpressMessagger#readme"
+}
