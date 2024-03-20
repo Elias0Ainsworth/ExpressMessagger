@@ -12,3 +12,59 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id Int @id @default(autoincrement())
+  nickname String
+  email String @unique
+  password String
+
+  user_in_room UserInRoom[]
+  ownerRoom Room[]
+  messages Message[]
+
+  created_at DateTime @default(now())
+  updated_at  DateTime  @updatedAt
+
+  @@map("user")
+}
+
+model Room {
+  id Int @id @default(autoincrement())
+  title String
+  description String?
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+
+  user_in_room UserInRoom[]
+  messages Message[]
+
+  created_at DateTime @default(now())
+  updated_at  DateTime  @updatedAt
+
+  @@map("room")
+}
+
+model Message {
+  id Int @id @default(autoincrement())
+  content String
+  
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  room Room @relation(fields: [roomId], references: [id])
+  roomId Int
+
+  created_at DateTime @default(now())
+  updated_at  DateTime  @updatedAt
+
+  @@map("message")
+}
+
+model UserInRoom {
+  user_id User @relation(fields: [userId], references: [id])
+  userId Int
+  room_id Room @relation(fields: [roomId], references: [id])
+  roomId Int
+  @@id([])
+  @@map("user_in_room")
+}
