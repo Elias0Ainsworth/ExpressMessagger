@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "messager on nodejs express platform",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon index.js",
+    "start:prod": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,10 @@
   "homepage": "https://github.com/Elias0Ainsworth/ExpressMessagger#readme",
   "dependencies": {
     "@prisma/client": "^5.11.0",
+    "express": "^4.19.1",
     "prisma": "^5.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
