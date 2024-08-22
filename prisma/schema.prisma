@@ -65,6 +65,8 @@ model UserInRoom {
   userId Int
   room_id Room @relation(fields: [roomId], references: [id])
   roomId Int
-  @@id([])
+
+  @@id([userId, roomId])
+  
   @@map("user_in_room")
 }
