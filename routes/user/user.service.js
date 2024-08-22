@@ -37,7 +37,19 @@ export class UserService {
             return user;
         } catch (error) {
             // Handle any errors that occur during the query
-            console.error("Error finding user by email:", error);
+            console.error("Error finding user by email", error);
+            throw error;
+        }
+    }
+
+    async findUserById(id) {
+        // Find the user by id
+        try {
+            const user = await prisma.user.findUnique({ where: { id }});
+            return user;
+        } catch (error) {
+            // Handle any errors that occur during the query
+            console.error("Error finding user by id", error);
             throw error;
         }
     }
