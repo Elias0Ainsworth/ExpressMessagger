@@ -1,27 +1,44 @@
 import prisma from '../../database/prisma.js'
 
 export class UserService {
-    async createUser(req, res) {
+    async createUser(req) {
 
     }
-    async findUser() {
+    async findUser(req) {
+        return await this.findUserByEmail(req)
+    }
+
+    async findAllUsers(req) {
         const users = await prisma.user.findMany({})
         return users;
     }
 
-    async findAllUsers(req, res) {
+    async updateUser(req) {
 
     }
 
-    async updateUser(req, res) {
+    async deleteUser(req) {
 
     }
 
-    async deleteUser(req, res) {
+    async findUserByEmail(req) {
+        let email;
 
-    }
+        // Determine the email based on the request method
+        if (req.method === "POST" && req.body.email) {
+            email = req.body.email;
+        } else if (req.query.email) {
+            email = req.query.email;
+        }
 
-    async findUserByEmail() {
-        
+        // Find the user by email
+        try {
+            const user = await prisma.user.findUnique({ where: { email }});
+            return user;
+        } catch (error) {
+            // Handle any errors that occur during the query
+            console.error("Error finding user by email:", error);
+            throw error;
+        }
     }
 }

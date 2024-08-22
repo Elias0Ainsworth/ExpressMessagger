@@ -15,11 +15,12 @@ router.get('/users', async () => {
     res.json(users)
 })
 
-router.put('/user', async (req, res) => {
+router.put('/user/:id', async (req, res) => {
+
 
 })
 
-router.delete('/user', async (req, res) => {
+router.delete('/user/:id', async (req, res) => {
     
 })
 
