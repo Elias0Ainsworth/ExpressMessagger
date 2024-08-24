@@ -13,6 +13,7 @@ const PORT = process.env.PORT | 3001;
 const app = express();
 
 app.use(express.static('static'));
+app.use(express.json())
 app.use(cors());
 app.use(helmet());
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
